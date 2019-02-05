@@ -12,10 +12,10 @@ const invoiceData = [
 // };
 
 const isOpen = x => x.status === 'OPEN';
-const makeSetStatusIf = status => predicate => invoiceObj => {
-    return (predicate(invoiceObj))
-                ? { ...invoiceObj, status }
-                : invoiceObj
+const makeSetStatusIf = status => predicate => documentObj => {
+    return (predicate(documentObj))
+                ? { ...documentObj, status }
+                : documentObj
 };
 
 const setDraftStatusIf = makeSetStatusIf('DRAFT');
