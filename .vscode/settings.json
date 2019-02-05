@@ -1,0 +1,18 @@
+{
+    "saveAndRun": {
+        "commands": [
+            {
+                "match": "map.js",
+                "cmd": "clear && node ./map.js",
+                "useShortcut": false,
+                "silent": false
+            },
+            {
+                "match": "fnarray.js",
+                "cmd": "clear && node ./fnarray.js",
+                "useShortcut": false,
+                "silent": false
+            }
+        ]
+    }
+}
