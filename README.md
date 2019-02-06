@@ -1,4 +1,4 @@
 # curry
 
-![curry](./curry.jpg)
-![Haskell Curry](./haskell-curry.jpg)
+![curry](./img/curry.jpg)
+![Haskell Curry](./img/haskell-curry.jpg)
