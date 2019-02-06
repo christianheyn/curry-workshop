@@ -1,6 +1,22 @@
-const greeting = (userName, text) => {
+const greeting = (userName) => (text) => {
     console.log(text + ' ' + userName);
 };
 
-greeting('Billy', 'Guten Morgen,');
-greeting('Billy', 'Guten Abend,');
+const greetBilly = greeting('Billy');
+
+greetBilly('Guten Morgen,');
+
+// =======================================
+
+const makeSay = sound => () => { console.log(sound) }
+
+const Cat = {
+    say: makeSay('meow'),
+};
+
+const Dog = {
+    say: makeSay('wuff'),
+};
+
+Cat.say();
+Dog.say();
