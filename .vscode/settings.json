@@ -12,6 +12,12 @@
                 "cmd": "clear && node ./fnarray.js",
                 "useShortcut": false,
                 "silent": false
+            },
+            {
+                "match": "basic.js",
+                "cmd": "clear && node ./basic.js",
+                "useShortcut": false,
+                "silent": false
             }
         ]
     }

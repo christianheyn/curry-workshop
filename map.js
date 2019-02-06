@@ -1,9 +1,9 @@
 const invoiceData = [
-    { id: 0, status: 'DRAFT', invoice_number: 'RE01'},
-    { id: 1, status: 'OPEN', invoice_number: 'RE02'},
-    { id: 2, status: 'OVERDUE', invoice_number: 'RE03'},
-    { id: 3, status: 'PAID', invoice_number: 'RE04'},
-    { id: 5, status: 'CANCELED', invoice_number: 'RE06'},
+    { id: 0, status: 'DRAFT', nr: 'RE01'},
+    { id: 1, status: 'OPEN', nr: 'RE02'},
+    { id: 2, status: 'OVERDUE', nr: 'RE03'},
+    { id: 3, status: 'PAID', nr: 'RE04'},
+    { id: 5, status: 'CANCELED', nr: 'RE06'},
 ];
 
 /* Duplicated for every status */
@@ -11,15 +11,20 @@ const invoiceData = [
 //     return {...invoiceObj, status: 'DRAFT'};
 // };
 
-const isOpen = x => x.status === 'OPEN';
-const makeSetStatusIf = status => predicate => documentObj => {
-    return (predicate(documentObj))
-                ? { ...documentObj, status }
-                : documentObj
+/* makeSetStatusIf :: String -> ((Object -> Bool) -> (Object -> Object)) */
+const makeSetStatusIf = status => predicate => invoiceObj => {
+    return (predicate(invoiceObj))
+                ? { ...invoiceObj, status }
+                : invoiceObj
 };
 
-const setDraftStatusIf = makeSetStatusIf('DRAFT');
+const makeOr = (f1, f2) => x => (f1(x) || f2(x));
+const isOpen = x => x.status === 'OPEN';
+const isId2 = x => x.id === 2;
 
-const result = invoiceData.map(setDraftStatusIf(isOpen));
+const setDraftStatusIf = makeSetStatusIf('DRAFT');
+const isOpenOrId2 = makeOr(isOpen, isId2);
+
+const result = invoiceData.map(setDraftStatusIf(isOpenOrId2));
 
 console.log(result);
