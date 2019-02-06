@@ -8,11 +8,12 @@ const invoiceData = [
 
 const makeSetStatus = status => predicate => obj =>
     (predicate(obj) ? { ...obj, status } : obj)
+const makeAnd = (f1, f2) => x => f1(x) && f2(x);
+const makeOr = (f1, f2) => x => f1(x) || f2(x);
 
 const isOpen = x => x.status === 'OPEN';
 const isId2 = x => x.id === 2;
-const makeAnd = (f1, f2) => x => f1(x) && f2(x);
-const makeOr = (f1, f2) => x => f1(x) || f2(x);
+
 const isOpenOrId2 = makeAnd(isOpen, isId2);
 const setToDraftWhen = makeSetStatus('Draft');
 
